@@ -5,7 +5,7 @@ const path = require('path');
 const del = require('del');
 const AWS = require('aws-sdk');
 const multer = require('multer');
-const Router = require('express').Router();
+const Router = require('express').Router;
 const createError = require('http-errors');
 const debug = require('debug')('cfgram:banger-router');
 
@@ -29,7 +29,7 @@ function s3uploadProm(params) {
   });
 }
 
-profileRouter.post('/api/banger/:bangerID/banger', bearerAuth, upload.single('mp3'), function(req, res, next) {
+bangerRouter.post('/api/banger/:bangerID/banger', bearerAuth, upload.single('mp3'), function(req, res, next) {
   debug('POST: /api/banger/:bangerID/banger');
 
   if (!req.file) {
