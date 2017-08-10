@@ -31,11 +31,11 @@ function s3uploadProm(params) {
 
 bangerRouter.post('/api/profile/:profileID/banger', bearerAuth, upload.single('image'), function(req, res, next) {
   debug('POST: /api/profile/:profileID/banger');
+  console.log('*****:', req.file)
 
   if (!req.file) {
     return next(createError(400, 'slapper not found fam'));
   }
-console.log('*****:',req.file.path)
   if (!req.file.path) {
     return next(createError(500, 'slapper not saved fam'));
   }
@@ -44,7 +44,7 @@ console.log('*****:',req.file.path)
 
   let params = {
     ACL: 'public-read',
-    Bucker: process.env.AWS_BUCKET,
+    Bucket: process.env.AWS_BUCKET,
     Key: `${req.file.filename}${ext}`,
     Body: fs.createReadStream(req.file.path)
   }
@@ -52,14 +52,15 @@ console.log('*****:',req.file.path)
   Profile.findById(req.params.profileID)
   .then( () => s3uploadProm(params))
   .then( s3data => {
+    console.log('############:',s3data);
     del([`${dataDir}/*`]);
     let bangerData = {
       name: req.body.name,
       desc: req.body.desc,
       objectKey: s3data.Key,
-      mp3URI: s3data.Location,
+      imageURI: s3data.Location,
       userID: req.user._id,
-      profile: req.params.profileID
+      profileID: req.params.profileID
     }
     return new Banger(bangerData).save();
   })

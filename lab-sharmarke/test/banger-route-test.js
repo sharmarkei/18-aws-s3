@@ -79,7 +79,7 @@ describe('Banger Routes', function () {
           })
           .field('name', exampleBanger.name)
           .field('desc', exampleBanger.desc)
-          .attach('mp3', exampleBanger.png)
+          .attach('image', exampleBanger.mp3)
           .end((err, res) => {
             if (err) return done(err);
             expect(res.status).to.equal(200);
