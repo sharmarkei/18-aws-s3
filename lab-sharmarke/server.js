@@ -23,7 +23,7 @@ app.use(morgan('dev'));
 
 app.use(authRouter);
 app.use(profileRouter);
-// app.use(bangerRouter);
+app.use(bangerRouter);
 app.use(errors);
 
 app.listen(PORT, () => {

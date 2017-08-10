@@ -29,13 +29,13 @@ function s3uploadProm(params) {
   });
 }
 
-bangerRouter.post('/api/banger/:bangerID/banger', bearerAuth, upload.single('mp3'), function(req, res, next) {
-  debug('POST: /api/banger/:bangerID/banger');
+bangerRouter.post('/api/profile/:profileID/banger', bearerAuth, upload.single('mp3'), function(req, res, next) {
+  debug('POST: /api/profile/:profileID/banger');
 
   if (!req.file) {
     return next(createError(400, 'slapper not found fam'));
   }
-
+console.log('*****:',req.file.path)
   if (!req.file.path) {
     return next(createError(500, 'slapper not saved fam'));
   }
