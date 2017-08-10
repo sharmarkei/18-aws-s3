@@ -39,7 +39,6 @@ bangerRouter.post('/api/profile/:profileID/banger', bearerAuth, upload.single('i
   if (!req.file.path) {
     return next(createError(500, 'slapper not saved fam'));
   }
-
   let ext = path.extname(req.file.originalname);
 
   let params = {
