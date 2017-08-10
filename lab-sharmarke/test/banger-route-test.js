@@ -26,7 +26,7 @@ const exampleProfile = {
 const exampleBanger = {
   name: 'example banger',
   desc: 'example banger description',
-  mp3: `${__dirname}/../data/banger.mp3`
+  mp3: `${__dirname}/../data/banger.png`
 }
 
 describe('Banger Routes', function () {
@@ -79,7 +79,7 @@ describe('Banger Routes', function () {
           })
           .field('name', exampleBanger.name)
           .field('desc', exampleBanger.desc)
-          .attach('mp3', exampleBanger.mp3)
+          .attach('mp3', exampleBanger.png)
           .end((err, res) => {
             if (err) return done(err);
             expect(res.status).to.equal(200);

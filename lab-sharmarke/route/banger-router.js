@@ -29,7 +29,7 @@ function s3uploadProm(params) {
   });
 }
 
-bangerRouter.post('/api/profile/:profileID/banger', bearerAuth, upload.single('mp3'), function(req, res, next) {
+bangerRouter.post('/api/profile/:profileID/banger', bearerAuth, upload.single('image'), function(req, res, next) {
   debug('POST: /api/profile/:profileID/banger');
 
   if (!req.file) {

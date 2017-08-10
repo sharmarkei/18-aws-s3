@@ -8,7 +8,7 @@ const bangerSchema = Schema({
   desc: { type: String, required: true },
   userID: { type: Schema.Types.ObjectId},
   profileID: { type: Schema.Types.ObjectId, required: true },
-  mp3URI: { type: String, required: true, unique: true },
+  imageURI: { type: String, required: true, unique: true },
   objectKey: { type: String, required: true, unique: true },
   created: { type: Date, default: Date.now}
 })
