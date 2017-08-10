@@ -57,12 +57,12 @@ describe('Banger Routes', function () {
           .catch(done);
       });
 
-      before(done => {
+      before( done => {
         exampleProfile.userID = this.tempUser._id.toString();
         new Profile(exampleProfile).save()
           .then(profile => {
             this.tempProfile = profile;
-            done();
+            done(); 
           })
           .catch(done);
       });
@@ -79,7 +79,7 @@ describe('Banger Routes', function () {
           })
           .field('name', exampleBanger.name)
           .field('desc', exampleBanger.desc)
-          .attach('mp3', exampleBanger.mp3URI)
+          .attach('mp3', exampleBanger.mp3URIg)
           .end((err, res) => {
             if (err) return done(err);
             expect(res.status).to.equal(200);
