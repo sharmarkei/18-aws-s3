@@ -40,7 +40,7 @@ describe('Banger Routes', function () {
       .catch(done);
   });
 
-  describe('POST: /api/profile/profileID/banger', function () {  // instaction update save
+  describe('POST: /api/profile/:profileID/banger', function () {  // instaction update save
     describe('with a valid token and valid data', function () {
       before(done => {
         new User(exampleUser)
@@ -79,7 +79,7 @@ describe('Banger Routes', function () {
           })
           .field('name', exampleBanger.name)
           .field('desc', exampleBanger.desc)
-          .attach('mp3', exampleBanger.mp3URIg)
+          .attach('mp3', exampleBanger.mp3)
           .end((err, res) => {
             if (err) return done(err);
             expect(res.status).to.equal(200);
